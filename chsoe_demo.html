@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //将左边数据移动到右边
+            $("#right").click(function(){
+                //将左边option中选中的值赋给vSelect变量
+                var vSelect=$("#leftSelect option:selected");
+                //将数据添加到rightSelect中
+                vSelect.clone().appendTo("#rightSelect");
+                //同时删除leftSelect中的数据
+                vSelect.remove();
+            });
+
+            //将右边数据移动到左边
+            $("#left").click(function(){
+                var vSelect=$("#rightSelect option:selected");
+                //将右边的数据追加到左边列表中
+                vSelect.clone().appendTo("#leftSelect");
+                vSelect.remove();
+            });
+
+            //将左边全部数据移到右边
+            $("#rightAll").click(function(){
+                $("#rightSelect").append($("#leftSelect>option"));
+                $("#leftSelect>option").remove();
+            });
+
+            //将右边数据全部移到左边
+            $("#leftAll").click(function(){
+                $("#leftSelect").append($("#rightSelect>option"));
+                $("#rightSelect>option").remove();
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div>
+    <select id="leftSelect" multiple="multiple" style="height: 200px;width: 200px;">
+        <option value="0">电影0</option>
+        <option value="1">电影1</option>
+        <option value="2">电影2</option>
+        <option value="3">电影3</option>
+        <option value="4">电影4</option>
+        <option value="5">电影5</option>
+    </select>
+
+    <input type="button"  id="right" value=">" />
+    <input type="button"  id="rightAll" value=">>>" />
+    <input type="button"  id="left" value="<" />
+    <input type="button"  id="leftAll" value="<<<" />
+
+    <select id="rightSelect" multiple="multiple" style="height: 200px;width: 200px;">
+        <option value="6">电影6</option>
+        <option value="7">电影7</option>
+        <option value="8">电影8</option>
+        <option value="9">电影9</option>
+    </select>
+</div>
+</body>
+</html>

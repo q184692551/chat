@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+<input type="file" id="file_input">
+<img src="" class="img" />
+
+</body>
+</html>
+<script>
+    $("#file_input").change(function(){
+        var file = this.files[0];
+        if (window.FileReader) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+//监听文件读取结束后事件
+            reader.onloadend = function (e) {
+                $(".img").attr("src",e.target.result);    //e.target.result就是最后的路径地址
+                console.log('e.target.result',e.target.result);
+            };
+
+        }
+    });
+</script>

@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天室-群聊-首页</title>
+    <link rel="stylesheet" href="css/css.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/up.js"></script>
+</head>
+<body>
+<div class="char_out ">
+    <!--选择菜单-转发/撤回-->
+    <div class="hide_menu  click_hide" id="say_hide">
+        <div class="cen" id="re_say"><p><img src="img/copy_to.png" alt="">&nbsp;&nbsp;转发</p>
+        </div>
+        <div class="cen"><p><img src="img/del.png" alt="">&nbsp;&nbsp;撤回</p></div>
+    </div>
+    <!--选择菜单-加好友/发信息-->
+    <div class="send_hide click_hide" id="send_hide">
+        <div class="circle">
+            <p class="radius">
+                <img src="img/head.jpg" alt="">
+            </p>
+        </div>
+        <p class="send_name">ice</p>
+        <div class="to_send outer">
+            <div class="send_btn fl get_friend">加好友</div>
+            <a href="message.html">
+                <div class="send_btn bac fr">发信息</div>
+            </a>
+        </div>
+    </div>
+    <!--选择菜单-新增成员/重命名分组/删除分组-->
+    <div class="hide_menu click_hide" id="member_hide">
+        <div class="cen" id="alert_show"><p><img src="img/add_member.png" alt="">&nbsp;&nbsp;新增成员
+        </p></div>
+        <div class="cen" id="edit_show"><p><img src="img/re_name.png" alt="">&nbsp;&nbsp;重命名分组
+        </p></div>
+        <div class="cen"><p><img src="img/del.png" alt="">&nbsp;&nbsp;删除分组</p></div>
+    </div>
+
+    <!--选择菜单-通知设置/编辑资料/安全设置-->
+    <div class="hide_menu click_hide" id="set_hide">
+        <div class="cen" id="notice_show" ><p><img src="img/set1.png" alt="">&nbsp;&nbsp;通知设置
+        </p></div>
+        <div class="cen" id="personal_edit"><p><img src="img/set2.png" alt="">&nbsp;&nbsp;编辑资料
+        </p></div>
+        <div class="cen" id="pass_data_show"><p><img src="img/set3.png" alt="">&nbsp;&nbsp;安全设置
+        </p></div>
+    </div>
+    <!--弹窗-添加成员-->
+    <div class="add_alert click_hide" id="add_alert">
+        <div class="top flex just_bet">
+            <div class="title ">添加成员</div>
+            <div class="close "><img src="img/add_close.png" alt=""></div>
+        </div>
+        <div class="bot border-box">
+            <div class="cen flex just_bet">
+                <div class="cen_l">
+                    <div class="search flex just_bet">
+                        <div class="input">
+                            <input type="text" placeholder="输入名称搜索">
+                        </div>
+                        <div class="add_search">
+                            <img src="img/add_search.png" alt=""/>
+                        </div>
+                    </div>
+                    <div class="" id="search_lists">
+
+                    </div>
+
+                </div>
+                <div class="cen_r  flex_1">
+                    <div class="search flex just_bet">
+                        <div class="input">
+                            已选成员
+                        </div>
+                        <div class="input">
+                            已选1人
+                        </div>
+                    </div>
+                    <div id="search_chosed">
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="sure">确定</div>
+        </div>
+
+    </div>
+    <!--弹窗-转发消息到-->
+    <div class="add_alert click_hide" id="re_send">
+        <div class="top flex just_bet">
+            <div class="title ">转发消息到</div>
+            <div class="close "><img src="img/add_close.png" alt=""></div>
+        </div>
+        <div class="bot border-box">
+            <div class="cen">
+                <div class="cen_l flex_1">
+                    <div class="search flex just_bet">
+                        <div class="input flex_1">
+                            <input type="text" class="flex_1" placeholder="输入名称搜索">
+                        </div>
+                        <div class="add_search">
+                            <img src="img/add_search.png" alt=""/>
+                        </div>
+                    </div>
+                    <div class="recent_chat flex just_bet">
+                        <p>最近聊天</p>
+                        <p class="recent_down">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                    </div>
+                    <div class="data_lists" id="recent_list">
+
+                    </div>
+
+                    <!--自己的分组-->
+                    <div class="Groups">
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="bot_btn flex just_end">
+                <div class="cancel">取消</div>
+                <div class="cancel sure">确定</div>
+            </div>
+        </div>
+
+
+    </div>
+    <!--弹窗-修改分组-->
+    <div class="edit_alert click_hide" id="edit_alert">
+        <div class="top flex just_bet">
+            <div class="title ">修改分组</div>
+            <div class="close "><img src="img/add_close.png" alt=""></div>
+        </div>
+        <div class="bot border-box">
+            <div class="cen flex just_center">
+                <p>分组名称</p>
+                <input type="text">
+            </div>
+            <div class="bot_btn flex just_end">
+                <div class="cancel">取消</div>
+                <div class="cancel sure">确定</div>
+            </div>
+
+        </div>
+    </div>
+    <!--弹窗-修改群名称-->
+    <div class="edit_alert click_hide" id="group_change_m">
+        <div class="top flex just_bet">
+            <div class="title ">修改群名称</div>
+            <div class="close "><img src="img/add_close.png" alt=""></div>
+        </div>
+        <div class="bot border-box">
+            <div class="cen flex just_center">
+                <p>群</p>
+                <input type="text">
+            </div>
+            <div class="bot_btn flex just_end">
+                <div class="cancel">取消</div>
+                <div class="cancel sure">确定</div>
+            </div>
+
+        </div>
+    </div>
+    <!--弹窗-添加好友-->
+    <div class="edit_alert click_hide" id="new_friend">
+        <div class="top flex just_bet">
+            <div class="title ">添加好友</div>
+            <div class="close "><img src="img/add_close.png" alt=""></div>
+        </div>
+        <div class="bot border-box">
+            <div class="cen flex just_center">
+                <p>分组</p>
+                <div class="selectin ">
+                    <select name="">
+                        <option value="1">我的好友</option>
+                        <option value="2">我的同事</option>
+                        <option value="3">我的朋友</option>
+                    </select>
+
+                    <img src="img/select_right.png" alt="">
+                </div>
+            </div>
+            <div class="bot_btn flex just_end">
+                <div class="cancel">取消</div>
+                <div class="cancel sure">确定</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--弹窗-通知设置-->
+    <div class="edit_alert click_hide" id="notice">
+        <div class="top flex just_bet">
+            <div class="title ">通知设置</div>
+            <div class="close "><img src="img/add_close.png" alt=""></div>
+        </div>
+        <div class="bot border-box">
+            <div class="cen flex just_start">
+                <p>通知声音</p>
+                <div class="on_off">
+                    <div class="btn"></div>
+                </div>
+            </div>
+            <div class="cen flex just_start">
+                <p>消息免打扰</p>
+                <div class="on_off">
+                    <div class="btn off"></div>
+                </div>
+            </div>
+
+            <div class="bot_btn flex just_end">
+                <div class="cancel">取消</div>
+                <div class="cancel sure">确定</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--弹窗-编辑资料-个人资料-->
+    <div class="edit_alert click_hide" id="personal_data">
+        <div class="top flex just_bet">
+            <div class="title ">个人资料</div>
+            <div class="close "><img src="img/add_close.png" alt=""></div>
+        </div>
+        <div class="bot border-box">
+            <div class="cen flex just_center">
+                <p>头像</p>
+                <div class="input">
+                    <div class="circle_head ">
+                        <img src="img/head.jpg" alt=""/>
+                        <input type="file"/>
+                    </div>
+                </div>
+            </div>
+            <div class="cen flex just_center">
+                <p>名字</p>
+                <input type="text">
+            </div>
+            <div class="bot_btn flex just_end">
+                <div class="cancel">取消</div>
+                <div class="cancel sure">确定</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--弹窗-安全设置-->
+    <div class="edit_alert click_hide" id="pass_data">
+        <div class="top flex just_bet">
+            <div class="title ">设置新密码</div>
+            <div class="close "><img src="img/add_close.png" alt=""></div>
+        </div>
+        <div class="bot border-box">
+            <div class="cen flex just_start">
+                <p>旧密码</p>
+                <input type="password">
+            </div>
+            <div class="cen flex just_start">
+                <p>新密码</p>
+                <input type="password">
+            </div>
+            <div class="cen flex just_start">
+                <p>确认密码</p>
+                <input type="password">
+            </div>
+            <div class="bot_btn flex just_end">
+                <div class="cancel">取消</div>
+                <div class="cancel sure">确定</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--弹窗/菜单end-->
+
+
+    <div class="chat_top  outer ">
+        <div class="chart_l fl "></div>
+        <div class="chart_r  ">
+            <div class="search_out fl ">
+                <div class="search fl">
+                    <img src="img/search.png" alt="">
+                    <input type="text" class="fl">
+                </div>
+                <div class="search_btn fr">搜索</div>
+            </div>
+            <span class="cen_txt">ice</span>
+            <div class="message fr ">
+                <a href="index.html">
+                    <div class="notice fl">
+                        <img src="img/notice.png" alt="">
+                        <div class="new_tip">
+                            <div class="new_mes">
+                                999+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="menu fl" id="menu"><img src="img/menu_bar.png" alt=""></div>
+            </div>
+        </div>
+        <div class="hide_menu" id="menu_hide">
+            <div class="cen"><p><img src="img/to_top.png" alt="">&nbsp;&nbsp;置顶</p></div>
+            <div class="cen"><p><img src="img/out.png" alt="">&nbsp;&nbsp;退出</p></div>
+        </div>
+    </div>
+    <div class="chat_bot  outer">
+        <div class="chart_l fl">
+            <div class="menus_top">
+                <a href="message.html">
+                    <div class="menu_li new">
+                        <p class="menu_img ">
+                            <img src="img/left_menu1.png" alt="">
+                        </p>
+                        <p class="img_dis">
+                            <img src="img/left_menu1_sel.png" alt="">
+                        </p>
+                        <p class="menu_txt">
+                            消息
+                        </p>
+                    </div>
+                </a>
+                <a href="index.html">
+                    <div class="menu_li menu_sel">
+                        <p class="menu_img ">
+                            <img src="img/left_menu2.png" alt="">
+                        </p>
+                        <p class="img_dis">
+                            <img src="img/left_menu2_sel.png" alt="">
+                        </p>
+                        <p class="menu_txt">
+                            群聊
+                        </p>
+                    </div>
+                </a>
+                <a href="fenzu.html">
+                    <div class="menu_li ">
+                        <p class="menu_img ">
+                            <img src="img/fenzu.png" alt="">
+                        </p>
+                        <p class="img_dis">
+                            <img src="img/fenzu_sel.png" alt="">
+                        </p>
+                        <p class="menu_txt">
+                            分组
+                        </p>
+                    </div>
+                </a>
+                <a href="file.html">
+                    <div class="menu_li">
+                        <p class="menu_img ">
+                            <img src="img/left_menu3.png" alt="">
+                        </p>
+                        <p class="img_dis">
+                            <img src="img/left_menu3_sel.png" alt="">
+                        </p>
+                        <p class="menu_txt">
+                            文件
+                        </p>
+                    </div>
+                </a>
+
+            </div>
+            <div class="menus_bot">
+                <div class="menu_li " style="position: relative;" id="set_btn">
+                    <p class="menu_img ">
+                        <img src="img/set.png" alt="">
+                    </p>
+                    <p class="img_dis">
+                        <img src="img/set_sel.png" alt="">
+                    </p>
+                    <p class="menu_txt">
+                        设置
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="chart_l_c fl">
+            <div class="member_top outer">
+                <div class="margin_cen">
+                    <p class="fl">群名称</p>
+                    <p class="fr" id="Group_change" >
+                        <img src="img/add.png" alt="">
+                    </p>
+                </div>
+
+            </div>
+            <div class="member_bot">
+                <!--一个群start-->
+                <div class="one_group">
+                    <div class="margin_cen members" style="position: relative;">
+                        <p class="fl cut_down">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">成员列表</p>
+                        <p class="fr member">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+
+                    </div>
+                    <div class="people_lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--一个群end-->
+                <div class="one_group">
+                    <div class="margin_cen members" style="position: relative;">
+                        <p class="fl cut_down">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">成员列表</p>
+                        <p class="fr member">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+
+                    </div>
+                    <div class="people_lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="one_group">
+                    <div class="margin_cen members" style="position: relative;">
+                        <p class="fl cut_down">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">成员列表</p>
+                        <p class="fr member">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+
+                    </div>
+                    <div class="people_lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="one_group">
+                    <div class="margin_cen members" style="position: relative;">
+                        <p class="fl cut_down">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">成员列表</p>
+                        <p class="fr member">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+
+                    </div>
+                    <div class="people_lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="one_group">
+                    <div class="margin_cen members" style="position: relative;">
+                        <p class="fl cut_down">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">成员列表</p>
+                        <p class="fr member">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+
+                    </div>
+                    <div class="people_lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="one_group">
+                    <div class="margin_cen members" style="position: relative;">
+                        <p class="fl cut_down">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">成员列表</p>
+                        <p class="fr member">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+
+                    </div>
+                    <div class="people_lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                    <div class="mes_txt x fr">
+                                        <img src="img/x.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="chart_r">
+            <div class="conversation ">
+                <div class="tips ">
+                    <p>没有更多消息了</p>
+                    <p>———— 14:25 ————</p>
+                </div>
+                <div class="say ">
+                    <div class="say_l ">
+                        <div class="circle ">
+                            <p class="radius">
+                                <img src="img/head.jpg" alt="">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="say_r ">
+                        <div><span class="user">ice</span><span class="time">13:41</span></div>
+                        <div class="pop">
+                            <div class="pop_r ">
+                                <div class="pop_l ">
+                                    <img src="img/pop_left.png" alt="">
+                                </div>
+                                <p>
+                                    当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版当前使用的是免费版</p>
+                            </div>
+                            <p class="fr say_menu">
+                                <img src="img/cen_menu.png" alt="">
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="say ">
+                    <div class="say_l ">
+                        <div class="circle ">
+                            <p class="radius">
+                                <img src="img/head.jpg" alt="">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="say_r">
+                        <div><span class="user">ice</span><span class="time">13:41</span></div>
+                        <div class="pop">
+                            <div class="pop_r ">
+                                <div class="pop_l ">
+                                    <img src="img/pop_left.png" alt="">
+                                </div>
+                                <p>当前使用的是免费版</p>
+                            </div>
+                            <p class="fr say_menu">
+                                <img src="img/cen_menu.png" alt="">
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="say self">
+
+                    <div class="say_l">
+                        <div><span class="user">ice</span><span class="time">13:41</span></div>
+                        <div class="pop">
+                            <p class="fl say_menu">
+                                <img src="img/cen_menu.png" alt="">
+                            </p>
+                            <div class="pop_r ">
+                                <p>自我自我自我自我自我自我自我自我自我自我自我自我</p>
+                                <div class="pop_l_self ">
+                                    <img src="img/pop_left.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="say_r ">
+                        <div class="circle ">
+                            <p class="radius">
+                                <img src="img/head.jpg" alt="">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="recall">
+                    <p><span class="rename">ice</span><span>撤回了消息</span></p>
+                </div>
+            </div>
+            <div class="send">
+                <div class="imgbox">
+                    <img src="img/faceimg/1.png">
+                    <img src="img/faceimg/2.png">
+                    <img src="img/faceimg/3.png">
+                    <img src="img/faceimg/4.png">
+                    <img src="img/faceimg/5.png">
+                </div>
+                <div class="send_nav ">
+                    <div class="face_change li fl">
+                        <img src="img/face.png" alt="">
+                    </div>
+                    <div class="img_chang li fl">
+                        <img src="img/img.png" alt="">
+                        <input type="file" id="img_input">
+                    </div>
+                    <div class="file_chang li fl">
+                        <img src="img/file.png" alt="">
+                        <input type="file">
+                    </div>
+
+                </div>
+                <div class="bot_out">
+                    <div class="send_bot editbox fl" id="testdiv" contenteditable="true" onkeydown="enterkey(event)">
+                        当前使用的是免费版，支付之后升级高级版
+                    </div>
+                    <div class="send_btn fl" onclick="send()">发送</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    //此处必须防止在最下端。
+    document.getElementById("testdiv").focus();
+
+    var edt = document.getElementById("testdiv");
+    if (edt.addEventListener) {
+        edt.addEventListener("paste", pasteHandler, false);
+    } else {
+        edt.attachEvent("onpaste", pasteHandler);
+    }
+
+    function send() {
+        var content = document.getElementById("testdiv").innerHTML;
+        alert(content);
+    }
+
+    //    $(".face_change").hover(function () {
+    //        $(".imgbox").show();
+    //    })
+    $(".face_change").hover(function () {
+        $(".imgbox").show();
+    }, function () {
+        $(".imgbox").hide();
+    });
+    $(".imgbox").hover(function () {
+        $(".imgbox").show();
+    }, function () {
+        $(".imgbox").hide();
+    });
+
+    /*顶部右上角菜单*/
+    //    $(".hide_menu").hover(function () {
+    //        $(this).show();
+    //    }, function () {
+    //        $(this).hide();
+    //    });
+    $(".hide_menu").on('click', function () {
+        $(this).toggle();
+    });
+
+
+    /*顶部右上角菜单*/
+    $("#menu").on('click', function (ev) {
+        $("#menu_hide").toggle();
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#menu_hide").hide();
+        });
+        ev.stopPropagation();
+    });
+    $("#menu_hide").on('click',function (e) {
+        e.stopPropagation();
+    })
+
+
+
+
+    //    document.onclick=function(ev){
+    //        var oEvent=ev||event;
+    //        console.log(oEvent.screenX+'，'+oEvent.screenY);//   IE浏览器兼容
+    //        $(".select_hide").toggle();
+    //        $(".select_hide").css("left",oEvent.screenX+"px").css("top",oEvent.screenY-70+"px");
+    //    };
+
+
+    $("#img_input").change(function () {
+        var file = this.files[0];
+        if (window.FileReader) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+//监听文件读取结束后事件
+            reader.onloadend = function (e) {
+                var url = e.target.result;
+                var img_url = "<img src='" + url + "'>";
+                _insertimg(img_url);
+                // $(".img").attr("src",e.target.result);    //e.target.result就是最后的路径地址
+                console.log('e.target.result', e.target.result);
+            };
+
+        }
+    });
+    /*发送消息*/
+    var chose_list = [
+        {'id': 0, 'check': false},
+        {'id': 1, 'check': false},
+        {'id': 2, 'check': false},
+        {'id': 3, 'check': false},
+        {'id': 4, 'check': false},
+        {'id': 5, 'check': false},
+        {'id': 6, 'check': false},
+        {'id': 7, 'check': false},
+        {'id': 8, 'check': false},
+        {'id': 9, 'check': false},
+        {'id': 10, 'check': false},
+        {'id': 11, 'check': false},
+        {'id': 12, 'check': false},
+        {'id': 13, 'check': false}
+    ];//可选id
+    var chosed = [];//已选id
+
+    ////添加成员
+    $("#alert_show").click(function (e) {
+        $(".click_hide").hide();
+        $("#add_alert").show();
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#add_alert").hide();
+        });
+        e.stopPropagation();
+        $("#search_lists").html('');
+        for (var i = 0; i < chose_list.length; i++) {
+            var index = chose_list[i]['id'];
+            var chose_li = ' <div class="search_list flex just_bet">' +
+                ' <div class="search_list_l flex">' +
+                ' <div class="circle ">' +
+                ' <p class="radius">' +
+                ' <img src="img/head.jpg" alt="">' +
+                '</p>' +
+                '</div>' +
+                ' <div class="list_txt">ice</div>' +
+                '</div>' +
+                '<div class="check" >' +
+                '<label class="my_protocol">' +
+                ' <input class="input_agreement_protocol" type="checkbox" name="search_check" value="id' + index + '" onclick="chosein(' + index + ')"/>' +
+                '<span></span>' +
+                '</label>' +
+                '</div>' +
+                '</div>';
+            $("#search_lists").append(chose_li);
+        }
+    });
+    $("#add_alert").on('click',function (e) {
+       e.stopPropagation();
+    });
+
+    /*重命名分组*/
+    $("#edit_show").on('click',function (e) {
+        $(".click_hide").hide();
+        $("#edit_alert").show();
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#edit_alert").hide();
+        });
+        e.stopPropagation();
+    });
+
+    $("#edit_alert").on('click',function (e) {
+        e.stopPropagation();
+    });
+
+    /*重命名群名称*/
+    $("#Group_change").on('click',function (e) {
+        $(".click_hide").hide();
+        $("#group_change_m").show();
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#group_change_m").hide();
+        });
+        e.stopPropagation();
+    });
+    $("#group_change_m").on('click',function (e) {
+        e.stopPropagation();
+    });
+
+    /*弹窗点击x关闭*/
+    $('.close').click(function () {
+        $(".click_hide").hide();
+    });
+
+
+
+
+    /*弹出选择*/
+
+    function chosein(index) {
+        var showed = chosed.indexOf(index);//是否已经展示
+        var chose = chose_list[index]['check'];
+        $("#search_chosed").html('');
+        chose === false ? chose_list[index]['check'] = true : chose_list[index]['check'] = false;
+        for (var i = 0; i < chose_list.length; i++) {
+
+            var index = chose_list[i].id;
+            var show = chose_list[i].check;
+            if (show === true) {
+                var addchosed = '<div class="search_list flex just_bet" id="id' + index + '">' +
+                    '<div class="search_list_l flex">' +
+                    ' <div class="circle ">' +
+                    ' <p class="radius">' +
+                    '<img src="img/head.jpg" alt="">' +
+                    '</p>' +
+                    '</div>' +
+                    '<div class="list_txt">ice</div>' +
+                    ' </div>' +
+                    '<div class="check">' +
+                    '  <img src="img/del2.png" alt="">' +
+                    '</div>' +
+                    '</div>';
+                $("#search_chosed").append(addchosed);
+            }
+
+        }
+
+    }
+
+    $(".cut_down").click(function () {
+        $(this).parent('.members').parent('.one_group').find('.people_lists').toggle();
+    });
+
+
+    $(".peoples").click(function () {
+        $(this).find(".x").toggle();
+    });
+    $(".x").click(function () {
+        var r = confirm("确定将用户移除群聊吗？")
+        if (r == true) {
+            alert("确定");
+        }
+        else {
+            alert("取消");
+        }
+    });
+
+
+
+
+    /*通知设置*/
+    $("#notice_show").on('click',function (e) {
+        $(".click_hide").hide();
+        $("#notice").show();
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#notice").hide();
+        });
+        e.stopPropagation();
+    });
+    $("#notice").on("click", function (e) {
+        //点击带单时不隐藏
+        e.stopPropagation();
+    });
+
+    $(".on_off .btn").click(function () {
+        $(this).toggleClass('off');
+    });
+
+
+    /*个人信息窗口*/
+    $("#personal_edit").on('click',function (e) {
+        $(".click_hide").hide();
+        $("#personal_data").show();
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#personal_data").hide();
+        });
+        e.stopPropagation();
+    });
+    $("#personal_data").on("click", function (e) {
+        //点击带单时不隐藏
+        e.stopPropagation();
+    });
+
+    $(".on_off .btn").click(function () {
+        $(this).toggleClass('off');
+    });
+    /*安全设置*/
+    $("#pass_data_show").on('click',function (e) {
+        $(".click_hide").hide();
+        $("#pass_data").show();
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#pass_data").hide();
+        });
+        e.stopPropagation();
+    });
+    $("#pass_data").on("click", function (e) {
+        //点击带单时不隐藏
+        e.stopPropagation();
+    });
+
+    $(".on_off .btn").click(function () {
+        $(this).toggleClass('off');
+    });
+
+
+
+
+    //我的分组
+    var recent_list = [{'id': 0, 'name': 'ice', 'check': false}, {'id': 1, 'name': 'little', 'check': false}, {
+        'id': 2,
+        'name': 'w',
+        'check': false
+    }];
+
+    var my_GroupList = [
+        {
+            'group_name': '我的好友',
+            'list': [
+                {'id': 0, 'name': '测试猿', 'check': false},
+                {'id': 1, 'name': '程序猿', 'check': false},
+                {'id': 2, 'name': '产品猪', 'check': false}
+            ]
+        },
+        {
+            'group_name': '我的家人',
+            'list': [
+                {'id': 0, 'name': 'ice', 'check': false},
+                {'id': 1, 'name': 'icew', 'check': false},
+                {'id': 2, 'name': 'iceglacial', 'check': false}
+            ]
+        }
+    ];
+    //最近聊天
+    var chosed = [];//已选id
+    //消息转发
+    $("#re_say").on('click',function (e) {
+//        $(document).one("click", function () {
+//            //任意位置点击隐藏
+//            $("#re_send").hide();
+//        });
+        $(".click_hide").hide();
+        $("#re_send").show();
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#re_send").hide();
+        });
+        e.stopPropagation();
+        $("#recent_list").html('');
+        for (var i = 0; i < recent_list.length; i++) {
+            var index = recent_list[i]['id'];
+            var name = recent_list[i]['name'];
+            var chose_li = ' <div class="search_list flex just_bet">' +
+                ' <div class="search_list_l flex">' +
+                ' <div class="circle ">' +
+                ' <p class="radius">' +
+                ' <img src="img/head.jpg" alt="">' +
+                '</p>' +
+                '</div>' +
+                ' <div class="list_txt">' + name + '</div>' +
+                '</div>' +
+                '<div class="check" >' +
+                '<label class="my_protocol">' +
+                ' <input class="input_agreement_protocol" type="checkbox" name="search_check" value="id' + index + '" onclick="chosein(' + index + ')"/>' +
+                '<span></span>' +
+                '</label>' +
+                '</div>' +
+                '</div>';
+            $("#recent_list").append(chose_li);
+        }
+
+        $(".Groups").html('');
+        for (var j = 0; j < my_GroupList.length; j++) {
+            var group_name = my_GroupList[j]['group_name'];
+            var list = my_GroupList[j]['list'];
+
+            var g_li = '<div class="recent_chat flex just_bet">' +
+                '<p>' + group_name + '</p>' +
+                '<p class="recent_down">' +
+                '<img src="img/cut_down.png" alt="">' +
+                '</p>' +
+                '</div>' +
+                '<div class="data_lists MyGroupList" >' +
+                '</div>';
+            $(".Groups").append(g_li);
+            for (var k = 0; k < list.length; k++) {
+                var index = list[k]['id'];
+                var name = list[k]['name'];
+                var chose_li = ' <div class="search_list data_lists flex just_bet">' +
+                    ' <div class="search_list_l flex">' +
+                    ' <div class="circle ">' +
+                    ' <p class="radius">' +
+                    ' <img src="img/head.jpg" alt="">' +
+                    '</p>' +
+                    '</div>' +
+                    ' <div class="list_txt">' + name + '</div>' +
+                    '</div>' +
+                    '<div class="check" >' +
+                    '<label class="my_protocol">' +
+                    ' <input class="input_agreement_protocol" type="checkbox" name="search_check" value="id' + index + '" onclick="chosein(' + index + ')"/>' +
+                    '<span></span>' +
+                    '</label>' +
+                    '</div>' +
+                    '</div>';
+                $(".MyGroupList").prepend(chose_li);
+            }
+
+        }
+    });
+
+    $("#re_send").on('click',function (e) {
+        e.stopPropagation();
+    });
+
+
+
+
+
+
+    $(".Groups").on('click', '.recent_down', function () {
+        $(this).parent('.recent_chat').next('.data_lists').toggle();
+    });
+
+    $(".recent_down").on('click', function () {
+
+        $(this).parent('.recent_chat').next('.data_lists').toggle();
+    });
+
+
+    $(".get_friend").on('click', function (e) {
+        $(".click_hide").hide();
+        $("#new_friend").show();
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#new_friend").hide();
+        });
+        e.stopPropagation();
+    });
+    $("#new_friend").on("click", function (e) {
+        //点击带单时不隐藏
+        e.stopPropagation();
+    });
+
+    /*加好友*/
+    $(".mes_del img").on('click', function (ev) {
+        var oEvent = ev || event;
+        $(".click_hide").hide();
+        $("#send_hide").show();
+        var top = $(this).offset().top;
+        if (top < 689) {
+            $("#send_hide").css("left", oEvent.screenX + 0 + "px").css("top", top + "px");
+        }
+        if (top > 689) {
+            var btn_height = top - 290;
+            $("#send_hide").css("left", oEvent.screenX + 0 + "px").css("top", btn_height + "px");
+        }
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#send_hide").hide();
+        });
+        ev.stopPropagation();
+    });
+
+    $("#send_hide").on("click", function (e) {
+        //点击带单时不隐藏
+        e.stopPropagation();
+    });
+
+
+    $(".member").on('click', function (ev) {
+        var oEvent = ev || event;
+        $(".click_hide").hide();
+        $("#member_hide").show();
+        var top = $(this).offset().top;
+        if (top < 835) {
+            console.log('oEvent1', oEvent.screenY);
+            $("#member_hide").css("left", oEvent.screenX + 0 + "px").css("top", top + 20 + "px");
+        }
+        if (top > 835) {
+            var btn_height = top - 143;
+            $("#member_hide").css("left", oEvent.screenX + 0 + "px").css("top", btn_height + 20 + "px");
+        }
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#member_hide").hide();
+        });
+        ev.stopPropagation();
+    });
+
+    $("#member_hide").on("click", function (e) {
+        //点击带单时不隐藏
+        e.stopPropagation();
+    });
+
+    /*设置菜单-触发*/
+    $('#set_btn').click(function (ev) {
+        var oEvent = ev || event;
+        $(".click_hide").hide();
+        $("#set_hide").show();
+        var top = $(this).offset().top;
+        if (top < 835) {
+            console.log('oEvent1', oEvent.screenY);
+            $("#set_hide").css("left", oEvent.screenX + 0 + "px").css("top", top + 20 + "px");
+        }
+        if (top > 835) {
+            var btn_height = top - 143;
+            $("#set_hide").css("left", oEvent.screenX + 0 + "px").css("top", btn_height + 20 + "px");
+        }
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#set_hide").hide();
+        });
+        ev.stopPropagation();
+    });
+    $("#set_hide").on('click',function (e) {
+        e.stopPropagation();
+    });
+
+    /*转发菜单-触发*/
+    $(".say_menu").on('click', function (ev) {
+        $(this).parent('.pop').next('.say_hide').toggle();
+        var oEvent = ev || event;
+        $(".click_hide").hide();
+        $("#say_hide").show();
+        var top = $(this).offset().top;
+        if (top < 835) {
+            console.log('oEvent1', oEvent.screenY);
+            $("#say_hide").css("left", oEvent.screenX + 0 + "px").css("top", top + 20 + "px");
+        }
+        if (top > 835) {
+            var btn_height = top - 143;
+            $("#say_hide").css("left", oEvent.screenX + 0 + "px").css("top", btn_height + 20 + "px");
+        }
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#say_hide").hide();
+        });
+        ev.stopPropagation();
+    });
+
+//    $("#say_hide").on('click',function (e) {
+//        e.stopPropagation();
+//    });
+
+</script>

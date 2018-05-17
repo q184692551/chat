@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天室-分组</title>
+    <link rel="stylesheet" href="css/css.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/up.js"></script>
+</head>
+<body>
+<div class="char_out ">
+    <!--弹窗-修改分组-->
+    <div class="edit_alert click_hide" id="edit_alert">
+        <div class="top flex just_bet">
+            <div class="title ">修改分组</div>
+            <div class="close "><img src="img/add_close.png" alt=""></div>
+        </div>
+        <div class="bot border-box">
+            <div class="cen flex just_center">
+                <p>分组名称</p>
+                <input type="text">
+            </div>
+            <div class="bot_btn flex just_end">
+                <div class="cancel">取消</div>
+                <div class="cancel sure">确定</div>
+            </div>
+
+        </div>
+    </div>
+    <!--弹出菜单-重命名分组/删除分组-->
+    <div class="hide_menu click_hide" id="group_edit">
+        <div class="cen">
+            <p id="edit_show"><img src="img/re_name.png" alt="">&nbsp;&nbsp;重命名分组</p>
+        </div>
+        <div class="cen">
+            <p><img src="img/del.png" alt="">&nbsp;&nbsp;删除分组</p>
+        </div>
+    </div>
+
+    <div class="send_hide click_hide send_del" id="send_hide">
+        <div class="circle">
+            <p class="radius">
+                <img src="img/head.jpg" alt="">
+            </p>
+        </div>
+        <div class="send_name">ice</div>
+        <div class="selectin ">
+            <select name="">
+                <option value="1">我的好友</option>
+                <option value="2">我的同事</option>
+                <option value="3">我的朋友</option>
+            </select>
+            <img src="img/select_right.png" alt="">
+        </div>
+        <div class="to_send outer">
+            <div class="send_btn del fl">删除好友</div>
+            <a href="message.html">
+                <div class="send_btn bac fr">发信息</div>
+            </a>
+        </div>
+    </div>
+    <div class="chat_top  outer ">
+        <div class="chart_l fl "></div>
+        <div class="chart_r  ">
+            <div class="search_out fl ">
+                <div class="search fl">
+                    <img src="img/search.png" alt="">
+                    <input type="text" class="fl">
+                </div>
+                <div class="search_btn fr">搜索</div>
+            </div>
+            <span class="cen_txt">ice</span>
+            <div class="message fr ">
+                <a href="index.html">
+                    <div class="notice fl">
+                        <img src="img/notice.png" alt="">
+                        <div class="new_tip">
+                            <div class="new_mes">
+                                999+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="menu fl" id="menu"><img src="img/menu_bar.png" alt=""></div>
+            </div>
+        </div>
+        <div class="hide_menu">
+            <div class="cen"><p><img src="img/to_top.png" alt="">&nbsp;&nbsp;置顶</p></div>
+            <div class="cen"><p><img src="img/out.png" alt="">&nbsp;&nbsp;退出</p></div>
+        </div>
+    </div>
+    <div class="chat_bot  outer">
+        <div class="chart_l fl">
+            <div class="menus_top">
+                <a href="message.html">
+                    <div class="menu_li ">
+                        <p class="menu_img ">
+                            <img src="img/left_menu1.png" alt="">
+                        </p>
+                        <p class="img_dis">
+                            <img src="img/left_menu1_sel.png" alt="">
+                        </p>
+                        <p class="menu_txt">
+                            消息
+                        </p>
+                    </div>
+                </a>
+                <a href="index.html">
+                    <div class="menu_li ">
+                        <p class="menu_img ">
+                            <img src="img/left_menu2.png" alt="">
+                        </p>
+                        <p class="img_dis">
+                            <img src="img/left_menu2_sel.png" alt="">
+                        </p>
+                        <p class="menu_txt">
+                            群聊
+                        </p>
+                    </div>
+                </a>
+                <a href="fenzu.html">
+                    <div class="menu_li menu_sel">
+                        <p class="menu_img ">
+                            <img src="img/fenzu.png" alt="">
+                        </p>
+                        <p class="img_dis">
+                            <img src="img/fenzu_sel.png" alt="">
+                        </p>
+                        <p class="menu_txt">
+                            分组
+                        </p>
+                    </div>
+                </a>
+                <a href="file.html">
+                    <div class="menu_li">
+                        <p class="menu_img ">
+                            <img src="img/left_menu3.png" alt="">
+                        </p>
+                        <p class="img_dis">
+                            <img src="img/left_menu3_sel.png" alt="">
+                        </p>
+                        <p class="menu_txt">
+                            文件
+                        </p>
+                    </div>
+                </a>
+
+            </div>
+            <div class="menus_bot">
+                <div class="menu_li ">
+                    <p class="menu_img ">
+                        <img src="img/set.png" alt="">
+                    </p>
+                    <p class="img_dis">
+                        <img src="img/set_sel.png" alt="">
+                    </p>
+                    <p class="menu_txt">
+                        设置
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="chart_l_c fl">
+            <div class="member_bot">
+                <div class="fenzu_li">
+                    <div class="margin_cen members ">
+                        <p class="fl name_cut">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">我的好友</p>
+                        <p class="fr">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+                    </div>
+                    <div class="lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fenzu_li">
+                    <div class="margin_cen members ">
+                        <p class="fl name_cut">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">我的同事</p>
+                        <p class="fr">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+                    </div>
+                    <div class="lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fenzu_li">
+                    <div class="margin_cen members ">
+                        <p class="fl name_cut">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">我的朋友</p>
+                        <p class="fr">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+                    </div>
+                    <div class="lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fenzu_li">
+                    <div class="margin_cen members ">
+                        <p class="fl name_cut">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">我的好友</p>
+                        <p class="fr">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+                    </div>
+                    <div class="lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fenzu_li">
+                    <div class="margin_cen members ">
+                        <p class="fl name_cut">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">我的好友</p>
+                        <p class="fr">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+                    </div>
+                    <div class="lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fenzu_li">
+                    <div class="margin_cen members ">
+                        <p class="fl name_cut">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">我的好友</p>
+                        <p class="fr">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+                    </div>
+                    <div class="lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fenzu_li">
+                    <div class="margin_cen members ">
+                        <p class="fl name_cut">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">我的好友</p>
+                        <p class="fr">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+                    </div>
+                    <div class="lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fenzu_li">
+                    <div class="margin_cen members ">
+                        <p class="fl name_cut">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">我的好友</p>
+                        <p class="fr">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+                    </div>
+                    <div class="lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fenzu_li">
+                    <div class="margin_cen members ">
+                        <p class="fl name_cut">
+                            <img src="img/cut_down.png" alt="">
+                        </p>
+                        <p class="txt fl">我的好友</p>
+                        <p class="fr">
+                            <img src="img/cen_menu.png" alt="">
+                        </p>
+                    </div>
+                    <div class="lists">
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin_cen  outer">
+                            <div class="people_out outer">
+                                <div class="peoples fl">
+                                    <div class="circle fl">
+                                        <p class="radius">
+                                            <img src="img/head.jpg" alt="">
+                                        </p>
+                                        <div class="point outline">
+                                        </div>
+                                    </div>
+                                    <div class="mes_txt fl">ice</div>
+                                </div>
+                                <div class="mes_del fr">
+                                    <img src="img/add.png" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chart_r">
+            <div class="info_right">
+                <div class="circle">
+                    <p class="radius">
+                        <img src="img/head.jpg" alt="">
+                    </p>
+                </div>
+                <div class="name">
+                    ice
+                </div>
+
+                <div class="btn_touch">
+                    <a href="message.html"><p>发起对话</p></a>
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+    //此处必须防止在最下端。
+
+    $(".fenzu_li .name_cut").click(function () {
+        $(this).parent('.members').next('.lists').toggle();
+    });
+
+    /*顶部右上角菜单*/
+    $("#menu").hover(function () {
+        $(".hide_menu").show();
+    }, function () {
+        $(".hide_menu").hide();
+
+    });
+    $("#menu").click(function () {
+        $(".hide_menu").toggle();
+    });
+
+    //    $(".hide_menu").hover(function () {
+    //        $(".hide_menu").show();
+    //    }, function () {
+    //        $(".hide_menu").hide();
+    //    });
+
+
+    /*弹出菜单-删好友/发消息*/
+
+    $(".mes_del").on('click', function (ev) {
+        var oEvent = ev || event;
+        $(".click_hide").hide();
+        $("#send_hide").show();
+        var top = $(this).offset().top;
+        if (top < 730) {
+            $("#send_hide").css("left", oEvent.screenX + 0 + "px").css("top", top + 20 + "px");
+        }
+        if (top >= 730) {
+
+            $("#send_hide").css("left", oEvent.screenX + 0 + "px").css("top", top - 150 + "px");
+        }
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#send_hide").hide();
+        });
+        ev.stopPropagation();
+    });
+
+    $("#send_hide").on("click", function (e) {
+        //点击带单时不隐藏
+        e.stopPropagation();
+    });
+
+
+    /*修改分组*/
+    $(".members .fr").on('click', function (ev) {
+        var oEvent = ev || event;
+        $(".click_hide").hide();
+        $("#group_edit").show();
+        var top = $(this).offset().top;
+        console.log('top', top);
+        if (top < 900) {
+            $("#group_edit").css("left", oEvent.screenX + 0 + "px").css("top", top + 20 + "px");
+        }
+        if (top >= 900) {
+            $("#group_edit").css("left", oEvent.screenX + 0 + "px").css("top", top - 120 + "px");
+        }
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#group_edit").hide();
+        });
+        ev.stopPropagation();
+    });
+
+    $("#group_edit").on("click", function (e) {
+        //点击带单时不隐藏
+        e.stopPropagation();
+    });
+
+    /*重命名分组*/
+    $("#edit_show").on('click',function (e) {
+        $(".click_hide").hide();
+        $("#edit_alert").show();
+        $(document).one("click", function () {
+            //任意位置点击隐藏
+            $("#edit_alert").hide();
+        });
+        e.stopPropagation();
+    });
+
+    $("#edit_alert").on('click',function (e) {
+        e.stopPropagation();
+    });
+
+
+</script>

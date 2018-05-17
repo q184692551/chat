@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div><p>Hello</p></div>
+<div class="selected">
+   <div class="ice">
+       <p>Hello Again</p>
+   </div>
+</div>
+
+<script>
+    $("p").parent(".ice").parent(".selected").css("background", "yellow");
+</script>
+
+</body>
+</html>

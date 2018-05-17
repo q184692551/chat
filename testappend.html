@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<style>
+    .pf {
+        border: 1px solid red;
+        width: 200px;
+        height: 300px;
+    }
+</style>
+<body>
+<p>22222222222222</p>
+</body>
+</html>
+<script>
+   for(var i=0;i<3;i++){
+       $('p').append('<div class="pf" id="{i}">1111111111</div>')
+       $('.pf').on('click',function () {
+           console.log('pf',i);
+       })
+   }
+</script>
